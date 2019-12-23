@@ -13,7 +13,7 @@
   <div id="no-webcam" style="display: none;"><h3>No webcam available!</h3></div>
 </div>
 
-<mat-spinner *ngIf="top5Pred.length == 0" style="margin: auto;">Loading...</mat-spinner>
+<mat-spinner *ngIf="top5Pred.length == 0" style="margin: 50px auto;">Loading...</mat-spinner>
 
 <div class="prediction-container" *ngIf="top5Pred.length != 0">
   <div *ngFor="let p of top5Pred">
@@ -22,8 +22,8 @@
   </div>
 </div>
 
-<footer *ngIf="top5Pred.length != 0">
-  Author: <a href="">Mattia Brusamento</a>
+<footer>
+  <a href='https://it.linkedin.com/in/mattia-brusamento'>Created by Mattia Brusamento</a>
 </footer>
 
 <router-outlet></router-outlet>
