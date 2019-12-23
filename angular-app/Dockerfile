@@ -29,7 +29,8 @@ RUN ng build --output-path=dist
 
 EXPOSE 80
 
-CMD ng serve --host 0.0.0.0 --port 80
+## Testing
+CMD ng serve --host 0.0.0.0 --port 80 --ssl
 
 ########
 # Prod #
