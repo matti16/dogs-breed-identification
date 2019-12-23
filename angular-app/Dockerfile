@@ -20,25 +20,18 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json /app/package.json
 RUN npm install
 RUN npm install -g @angular/cli@8.3.21
+RUN npm install -g http-server
 
 # add app
 COPY . /app
 
 # generate build
-RUN ng build --output-path=dist
+RUN ng build --prod
 
-############
-### prod ###
-############
+WORKDIR /app/dist/angular-app
 
-# base image
-FROM nginx:1.16.0-alpine
+RUN http-server -p 80
 
-# copy artifact build from the 'build environment'
-COPY --from=build /app/dist /usr/share/nginx/html
 
 # expose port 80
 EXPOSE 80
-
-# run nginx
-CMD ["nginx", "-g", "daemon off;"]
