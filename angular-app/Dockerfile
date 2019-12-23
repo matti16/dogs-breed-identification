@@ -31,7 +31,7 @@ RUN npm install -g http-server
 ########
 FROM nginx:alpine
 
-COPY --from=builder /app/dist/ /usr/share/nginx/html/
+COPY --from=build /app/dist/ /usr/share/nginx/html/
 
 
 # expose port 80
