@@ -11,4 +11,5 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build the Docker image
-      run: docker build . --file angular-app/Dockerfile --tag dogs-breed-angular:$(date +%s)
+      working-directory: angular-app
+      run: docker build . --file Dockerfile --tag dogs-breed-angular:$(date +%s)
