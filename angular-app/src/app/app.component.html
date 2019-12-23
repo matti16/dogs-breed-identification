@@ -1,0 +1,28 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <mat-icon aria-hidden="false" aria-label="Dogs" style="margin-left: 25px;">pets</mat-icon>
+  <div style="margin: 25px;">Dogs Breed Identificator</div>
+</div>
+
+<div class="content" role="main">
+  <div class="webcam-box-outer">
+    <div class="webcam-box-inner">
+      <video autoplay playsinline muted id="webcam" width="299" height="299"></video>
+    </div>
+  </div>
+</div>
+
+<mat-spinner *ngIf="top5Pred.length == 0" style="margin: auto;">Loading...</mat-spinner>
+
+<div class="prediction-container" *ngIf="top5Pred.length != 0">
+  <div *ngFor="let p of top5Pred">
+    <b>{{p[0]}}</b> <mat-progress-bar mode="determinate" value="{{p[1]}}" class="prediction-bar"></mat-progress-bar>
+    <br>
+  </div>
+</div>
+
+<footer *ngIf="top5Pred.length != 0">
+  Author: <a href="">Mattia Brusamento</a>
+</footer>
+
+<router-outlet></router-outlet>
