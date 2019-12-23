@@ -29,7 +29,7 @@ RUN npm install -g http-server
 ########
 # Prod #
 ########
-FROM nginx:alpine
+FROM nginx:1.16.0-alpine
 
 COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
