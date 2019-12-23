@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   public model: tf.LayersModel = null;
   public top5Pred = [];
   public labels = (data as any).default;
+  private modelName: string = 'dogs-breed-model';
 
   public ngOnInit(): void {
     this.init();
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
 
   async init(){
     try {
-      this.webcam = await tfd.webcam(document.getElementById('webcam') as HTMLVideoElement);
+      this.webcam = await tfd.webcam(document.getElementById('webcam') as HTMLVideoElement, {'facingMode': 'environment'});
     } catch (e) {
       console.log(e);
       document.getElementById('no-webcam').style.display = 'block';
@@ -33,7 +34,14 @@ export class AppComponent implements OnInit {
   }
 
   async loadModel() {
-    this.model = await tf.loadLayersModel('/assets/models/model.json');
+    try {
+      console.log("Trying to load model from Indexed DB...");
+      this.model = await tf.loadLayersModel('indexeddb://' + this.modelName);
+    } catch (e) {
+      console.log("Loading from backend...");
+      this.model = await tf.loadLayersModel('/assets/models/model.json');
+      this.model.save('indexeddb://' + this.modelName);
+    }
   }
 
   /**
