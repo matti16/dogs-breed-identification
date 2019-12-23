@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+
+  dogs-breed-angular:
+    container_name: dogs-breed-angular
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+      - '443:80'
