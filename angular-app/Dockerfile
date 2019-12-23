@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -yq google-chrome-stable
 # set working directory
 WORKDIR /app
 
+# add app
+COPY . /app
+
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
 
@@ -22,15 +25,13 @@ RUN npm install
 RUN npm install -g @angular/cli@8.3.21
 RUN npm install -g http-server
 
-# add app
-COPY . /app
 
-# generate build
-RUN ng build --prod
+########
+# Prod #
+########
+FROM nginx:alpine
 
-WORKDIR /app/dist/angular-app
-
-RUN http-server -p 80
+COPY --from=builder /app/dist/ /usr/share/nginx/html/
 
 
 # expose port 80
