@@ -51,6 +51,7 @@
     display: inline-block;
     padding: 9px;
   }
+
   .webcam-box-inner {
     border: 1px solid #fafafa;
     border-radius: 4px;
@@ -72,7 +73,7 @@
   .prediction-btn {
     width: 299px;
     margin-left: 32px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     cursor: pointer;
   }
 
