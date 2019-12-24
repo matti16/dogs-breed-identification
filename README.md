@@ -19,4 +19,4 @@ This notebook contains the code to train an Xception model using transfer learni
 ## Angular App
 An Angular 8 PWA with Tensorflow JS that uses the converted model to make predictions.
 
-The model is cached in the browser and predicitons are made on the client side, so <b>network traffic is minimized</b>.
+The model is cached in the browser indexed DB and predicitons are made on the client side, so <b>network traffic is minimized</b>.
