@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
 import { HttpClientModule } from  '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +23,7 @@ import { environment } from '../environments/environment';
     MatProgressBarModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatButtonModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

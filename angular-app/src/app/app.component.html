@@ -7,18 +7,25 @@
 <div class="content" role="main">
   <div class="webcam-box-outer">
     <div class="webcam-box-inner">
-      <video autoplay playsinline muted id="webcam" width="299" height="299"></video>
+      <video [hidden]="!takingPic" autoplay playsinline muted id="webcam" width="299" height="299"></video>
+      <img [hidden]="takingPic" [src]="screenshotUrl" width="299" height="299"/>
     </div>
   </div>
   <div id="no-webcam" style="display: none;"><h3>No webcam available!</h3></div>
 </div>
 
-<mat-spinner *ngIf="top5Pred.length == 0" style="margin: 50px auto;">Loading...</mat-spinner>
+<mat-spinner *ngIf="model == null" style="margin: 50px auto;">Loading...</mat-spinner>
 
-<div class="prediction-container" *ngIf="top5Pred.length != 0">
-  <div *ngFor="let p of top5Pred">
-    <b>{{p[0]}}</b> <mat-progress-bar mode="determinate" value="{{p[1]}}" class="prediction-bar"></mat-progress-bar>
-    <br>
+<div *ngIf="model != null">
+
+  <button class="prediction-btn" *ngIf="takingPic" mat-raised-button color="primary" (click)="predict();">Predict</button>
+  <button class="prediction-btn" *ngIf="!takingPic" mat-raised-button color="accent" (click)="reset();">Reset</button>
+
+  <div class="prediction-container">
+    <div *ngFor="let p of top5Pred">
+      <b>{{p[0]}}</b> <mat-progress-bar mode="determinate" value="{{p[1]}}" class="prediction-bar"></mat-progress-bar>
+      <br>
+    </div>
   </div>
 </div>
 

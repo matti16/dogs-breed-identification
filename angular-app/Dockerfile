@@ -29,18 +29,13 @@ RUN ng build --output-path=dist
 
 EXPOSE 80
 
-## Testing
-CMD ng serve --host 0.0.0.0 --port 80 --ssl
-
 ########
 # Prod #
 ########
-#FROM nginx:alpine
+FROM nginx:alpine
 
-#COPY --from=build /app/dist/ /usr/share/nginx/html/
+COPY --from=build /app/dist/ /usr/share/nginx/html/
 
-# expose port 80
-#EXPOSE 80
 
 # run nginx
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
