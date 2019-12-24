@@ -14,12 +14,12 @@
   <div id="no-webcam" style="display: none;"><h3>No webcam available!</h3></div>
 </div>
 
-<mat-spinner *ngIf="model == null" style="margin: 60px auto;">Loading...</mat-spinner>
+<mat-spinner *ngIf="model == null" style="margin: 150px auto;">Loading...</mat-spinner>
 
 <div *ngIf="model != null">
 
   <button class="prediction-btn" *ngIf="takingPic" mat-raised-button color="primary" (click)="predict();">Predict</button>
-  <div style="margin: 140px"  *ngIf="takingPic"></div>
+  <div style="margin: 300px"  *ngIf="takingPic && !top5Pred.length"></div>
 
   <button class="prediction-btn" *ngIf="!takingPic" mat-raised-button color="accent" (click)="reset();">Reset</button>
 

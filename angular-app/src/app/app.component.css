@@ -72,9 +72,10 @@
 
   .prediction-btn {
     width: 299px;
-    margin-left: 32px;
+    margin: auto;
     margin-bottom: 24px;
     cursor: pointer;
+    display: block;
   }
 
   svg.material-icons {
